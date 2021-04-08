@@ -1,3 +1,59 @@
+const { mainValidate, mainStats } = require("./logic");
+
+const argv = process.argv.slice(2);
+const path = argv[0];
+
+let options = {}
+
+if (argv[1] === '--stats' || argv[2] === '--stats' || argv[1] === '--s' || argv[2] === '--s') {
+    options.stats = '--stats'
+}
+if (argv[1] === '--validate' || argv[2] === '--validate' || argv[1] === '--v' || argv[2] === '--v') {
+    options.validate = '--validate'
+}
+// if (argv[2] === '--validate' && argv[3] === '--stats' || argv[2] === '--stats' && argv[3] === '--validate' || argv[2] === '--stats' && argv[3] === '--validate') {
+    if (argv[2] === '--validate --stats' || argv[2] === '--stats --validate') {
+    options.validate = '--validate'
+    options.stats = '--stats'
+}
+
+
+if (options.stats === '--stats') {
+    mainStats(path)
+}
+
+if (options.validate === '--validate') {
+    mainValidate(path)
+}
+
+if (options.validate === '--validate' && options.stats === '--stats') {
+    // ambas(path)
+    mainValidate(path)
+    mainStats(path)
+}
+
+// switch (argv.length) {
+//     case 0:
+//         console.log('Ingresa tu ruta');
+//         break;
+//     //  case 2:
+//     //     if (argv[1] === '--stats' || argv[2] === '--stats' || argv[1] === '--s' || argv[2] === '--s') {
+//     //        options.stats = '--stats'
+//     //     }  if (options.stats === '--stats') {
+//     //        mainStats(path)
+//     //     }
+//     //    break;
+//     case 2:
+//         if (argv[1] === '--validate' || argv[2] === '--validate' || argv[1] === '--v' || argv[2] === '--v') {
+//             options.validate = '--validate'
+//         } if (options.validate === '--validate') {
+//             mainValidate(path)
+//         }
+//         break;
+// }
+
+
+
 // module.exports = () => {
 //   // ...
 // };
@@ -29,43 +85,3 @@
 //     // console.log('Este link esta roto: ', err );
 //     return  { status:  'FAIL' }
 //   });
-   
-
-
-//Lee un archivo
-// fs.readFile('README.md', 'utf-8', (error, data) => {
-//   if (error) {
-//     console.log(error);
-//   } else {
-//     console.log(data);
-//   }
-// });
-
-
-
-
-
-// //Contenido de un directorio
-// fs.readdir('../CDMX010-md-links', (error, file) => {
-//   if (error) {
-//     onerror(error);
-//     return;
-//   }
-//   console.log(file);
-// });
-
-// //Trae la extensión del archivo
-// console.log(path.extname('README.md'));
-// // console.log(path.extname('README.md').substring(1));
-
-// //Une dos segmentos de rutas
-// console.log(
-//   path.format({
-//     dir: '/CDMX010-md-links',
-//     base: 'README.md'
-//   })
-// );
-
-// //  me devuelve root, dir, base...
-// let pathObj = path.parse(__filename);
-// console.log(pathObj);
