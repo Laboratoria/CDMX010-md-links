@@ -1,4 +1,34 @@
 {
   "name": "md-links",
-  "version": "0.1.0"
+  "version": "1.0.0",
+  "description": "Verify files with .md extension & validates if links existed inside them are broken.",
+  "main": "index.js",
+  "license": "ISC",
+  "bin": {
+    "md-links": "./mdLinks.js"
+  },
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "klaw-sync": "^6.0.0",
+    "marked": "^2.0.1"
+  },
+  "scripts": {
+    "test": "jest --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cecisalof/CDMX010-md-links.git"
+  },
+  "author": "Cecilia Losada",
+  "bugs": {
+    "url": "https://github.com/cecisalof/CDMX010-md-links/issues",
+    "email": "cecilia.sanchezlosada@gmail.com"
+  },
+  "homepage": "https://github.com/cecisalof/CDMX010-md-links#readme",
+  "devDependencies": {
+    "jest": "^26.6.3"
+  }
 }
